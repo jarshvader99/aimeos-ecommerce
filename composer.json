@@ -11,7 +11,8 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "tightenco/ziggy": "^2.0"
+        "tightenco/ziggy": "^2.0",
+        "aimeos/aimeos-laravel": "~2024.04"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -41,7 +42,9 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan vendor:publish --tag=public --ansi",
+            "\\Aimeos\\Shop\\Composer::join"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
